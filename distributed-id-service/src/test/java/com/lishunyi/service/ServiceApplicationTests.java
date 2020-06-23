@@ -1,10 +1,10 @@
-package com.lishunyi.distributedid;
+package com.lishunyi.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DistributedIdApplicationTests {
+class ServiceApplicationTests {
 
     @Test
     void contextLoads() {

@@ -1,0 +1,25 @@
+syntax = "proto3";
+option java_multiple_files = true;
+// 定义输出的目录
+option java_package = "com.lishunyi.distributed.id";
+// 定义输出的类名
+option java_outer_classname = "IdProto";
+
+// 定义接口的类
+service IdService {
+    // 号段模式接口
+    rpc getSegmentId (IdRequest) returns (IdResponse) {
+    }
+    // 雪花算法模式接口
+    rpc getSnowflakeId (IdRequest) returns (IdResponse) {
+    }
+}
+
+// 请求参数
+message IdRequest {
+    string key = 1;
+}
+// 返回参数
+message IdResponse {
+    string id = 1;
+}

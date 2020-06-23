@@ -2,97 +2,79 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
     <parent>
         <groupId>com.lishunyi</groupId>
         <artifactId>lishunyi-starter-dependencies</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>distributed-id</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>distributed-id</name>
     <description>分布式ID</description>
 
+    <modules>
+        <module>distributed-id-service</module>
+        <module>distributed-id-interface</module>
+    </modules>
+
     <properties>
         <!--        <java.version>1.8</java.version>-->
         <mybaits.vesion>3.5.3</mybaits.vesion>
         <druid.version>1.1.20</druid.version>
-        <curator.version>2.6.0</curator.version>
+        <curator.version>5.0.0</curator.version>
         <leaf.version>1.0.1-RELEASE</leaf.version>
+        <grpc.strater.version>2.9.0.RELEASE</grpc.strater.version>
+        <grpc.version>1.30.0</grpc.version>
+        <protobuf.version>3.12.2</protobuf.version>
+        <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
+        <kr.motd.plugin.version>1.6.2</kr.motd.plugin.version>
+        <interface.version>0.0.1-SNAPSHOT</interface.version>
     </properties>
+    <dependencyManagement>
+        <dependencies>
 
-    <dependencies>
+            <!-- 美团leaf依赖 -->
+            <dependency>
+                <artifactId>leaf-boot-starter</artifactId>
+                <groupId>com.sankuai.inf.leaf</groupId>
+                <version>${leaf.version}</version>
+            </dependency>
 
-        <!-- 美团leaf依赖 -->
-        <dependency>
-            <artifactId>leaf-boot-starter</artifactId>
-            <groupId>com.sankuai.inf.leaf</groupId>
-            <version>${leaf.version}</version>
-        </dependency>
+            <!-- 原始mybatis依赖 -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybaits.vesion}</version>
+            </dependency>
 
-        <!-- 原始mybatis依赖 -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>${mybaits.vesion}</version>
-        </dependency>
+            <!-- 原始druid连接池依赖 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
 
-        <!-- 原始druid连接池依赖 -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>${druid.version}</version>
-        </dependency>
+            <!-- zookeeper依赖 -->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
 
-        <!-- zookeeper依赖 -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <version>${curator.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-spring-boot-starter</artifactId>
+                <version>${grpc.strater.version}</version>
+            </dependency>
 
-        <!-- mysql依赖 -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-server-spring-boot-starter</artifactId>
+                <version>${grpc.strater.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
