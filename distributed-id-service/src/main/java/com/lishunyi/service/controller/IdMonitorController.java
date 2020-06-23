@@ -8,9 +8,7 @@ import com.sankuai.inf.leaf.segment.model.LeafAlloc;
 import com.sankuai.inf.leaf.segment.model.SegmentBuffer;
 import com.sankuai.inf.leaf.service.SegmentService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.time.Instant;
@@ -86,6 +84,16 @@ public class IdMonitorController {
         }
         assert segmentIDGen != null;
         return segmentIDGen.getAllLeafAllocs();
+    }
+
+    @PostMapping("addTag")
+    public Integer addTag(@RequestBody LeafAlloc leafAlloc) {
+        SegmentIDGenImpl segmentIDGen = segmentService.getIdGen();
+        if (segmentIDGen == null) {
+            log.error("You should config leaf.segment.enable=true first");
+        }
+        assert segmentIDGen != null;
+        return segmentIDGen.addTag(leafAlloc);
     }
 
     /**
