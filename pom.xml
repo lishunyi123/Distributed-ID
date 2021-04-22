@@ -20,7 +20,7 @@
 
     <properties>
         <!--        <java.version>1.8</java.version>-->
-        <mybaits.vesion>3.5.3</mybaits.vesion>
+        <mybaits.vesion>3.5.6</mybaits.vesion>
         <druid.version>1.1.20</druid.version>
         <curator.version>5.0.0</curator.version>
         <leaf.version>1.0.1-RELEASE</leaf.version>
